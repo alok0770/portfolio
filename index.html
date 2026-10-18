@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alok Rana — BCA Student & Aspiring Java Backend Developer</title>
+  <meta name="description" content="Portfolio of Alok Rana — BCA 3rd Year Student from Uttarakhand, India. Focused on Core Java, OOP, Collections, Data Structures, and backend application development.">
+  <meta name="keywords" content="Alok Rana, Java Backend Developer, Core Java, DSA, LeetCode, Zero-Framework Java, Uttarakhand">
+  <meta name="author" content="Alok Rana">
+  <meta name="theme-color" content="#030712">
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Alok Rana — Aspiring Java Backend Developer">
+  <meta property="og:description" content="Building robust, scalable backend systems with Core Java, native HttpServer architectures, and algorithmic problem solving.">
+  <meta property="og:image" content="favicon.svg">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Alok Rana — Aspiring Java Backend Developer">
+  <meta name="twitter:description" content="Building robust, scalable backend systems with Core Java, native HttpServer architectures, and algorithmic problem solving.">
+  
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN with custom configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            cyanBrand: {
+              400: '#38bdf8',
+              500: '#06b6d4',
+              600: '#0284c7',
+            },
+            obsidian: {
+              DEFAULT: '#030712',
+              card: '#0b1329',
+              border: '#1e293b',
+              muted: '#94a3b8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#030712] text-slate-100 font-sans antialiased selection:bg-blue-500/30 selection:text-white min-h-screen relative overflow-x-hidden transition-colors duration-300">
+
+  <!-- Background Ambient Glow & Subtle Grid -->
+  <div class="fixed inset-0 bg-grid-pattern opacity-30 pointer-events-none z-0"></div>
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-radial-blue pointer-events-none z-0"></div>
+  <div class="fixed top-1/3 right-[-100px] w-[550px] h-[550px] bg-radial-cyan pointer-events-none z-0"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 px-5 py-3 rounded-xl bg-slate-900/90 border border-blue-500/30 shadow-2xl shadow-blue-500/10 backdrop-blur-md text-sm text-slate-200">
+    <i data-lucide="check-circle" class="w-5 h-5 text-blue-400"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-nav">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="group flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-blue-500 to-cyan-400 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/30 group-hover:scale-105 transition-transform duration-300">
+          AR
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-sm tracking-tight text-white group-hover:text-blue-400 transition-colors">Alok Rana</span>
+          <span class="text-[10px] text-blue-400 font-mono tracking-wider">JAVA.BACKEND</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-slate-800 text-sm">
+        <a href="#about" class="px-4 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all">About</a>
+        <a href="#projects" class="px-4 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all">Projects</a>
+        <a href="#stack" class="px-4 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all">Skills</a>
+        <a href="#experience" class="px-4 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all">Journey</a>
+        <a href="#contact" class="px-4 py-1.5 rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all">Contact</a>
+      </nav>
+
+      <!-- Action & Theme Controls -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <!-- Prominent GitHub Navbar Button -->
+        <a href="https://github.com/alok0770" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-700 hover:border-blue-500/60 shadow-sm transition-all" title="View GitHub Profile">
+          <svg class="w-4 h-4 shrink-0 fill-current text-white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span class="hidden sm:inline">github.com/alok0770</span>
+        </a>
+
+        <!-- Theme Switcher Button -->
+        <button id="theme-toggle" class="p-2 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 text-yellow-400 hover:text-yellow-300 transition-all shadow-sm" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+          <i id="theme-icon" data-lucide="sun" class="w-4 h-4"></i>
+        </button>
+
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-500 hover:to-cyan-500 shadow-lg shadow-blue-500/25 transition-all duration-200">
+          <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+          <span>Let's Connect</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="menu-btn" class="md:hidden p-2 text-slate-400 hover:text-white rounded-lg bg-slate-900/70 border border-slate-800" aria-label="Toggle Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-[#030712]/95 backdrop-blur-xl px-6 py-4 flex flex-col gap-3">
+      <a href="#about" class="text-slate-300 hover:text-blue-400 py-1 mobile-link">About</a>
+      <a href="#projects" class="text-slate-300 hover:text-blue-400 py-1 mobile-link">Projects</a>
+      <a href="#stack" class="text-slate-300 hover:text-blue-400 py-1 mobile-link">Skills</a>
+      <a href="#experience" class="text-slate-300 hover:text-blue-400 py-1 mobile-link">Journey</a>
+      <a href="#contact" class="text-slate-300 hover:text-blue-400 py-1 mobile-link">Contact</a>
+      <a href="https://github.com/alok0770" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-blue-400 py-1 font-mono text-xs">
+        <i data-lucide="github" class="w-4 h-4"></i>
+        <span>GitHub: @alok0770</span>
+      </a>
+      <a href="#contact" class="mt-2 text-center py-2.5 rounded-xl bg-blue-600 font-semibold text-xs text-white mobile-link">Get in Touch</a>
+    </div>
+  </header>
+
+  <main class="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-24 space-y-32">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-8 md:pt-16 pb-6 flex flex-col items-center text-center">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-blue-500/30 text-xs text-slate-300 shadow-inner mb-8">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+        </span>
+        <span class="font-medium text-slate-200">Backend Software Engineer • Java, Spring & Scalable Systems</span>
+      </div>
+
+      <!-- Main Heading: Clean, Goal-Oriented & Professional -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight max-w-4xl leading-[1.15] mb-6">
+        Architecting scalable backends & 
+        <span class="text-gradient-blue">modern, intelligent web systems</span>.
+      </h1>
+
+      <!-- Subheadline: Honest, Backend-Focused + Vibe Coding Frontend -->
+      <p class="text-slate-400 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+        Hi, I'm <strong class="text-white font-semibold">Alok Rana</strong> — a Backend-First Developer & BCA student from Uttarakhand, India. Focused on Java, Spring ecosystem, clean server-side architecture, and relational databases — paired with modern AI-assisted vibe coding for rapid, responsive web interfaces.
+      </p>
+
+      <!-- Primary Action Buttons (Prominent GitHub and CTAs) -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mb-12">
+        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-xl shadow-blue-600/30 transition-all duration-200 hover:-translate-y-0.5">
+          <span>Explore Projects</span>
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </a>
+
+        <!-- Prominent GitHub Profile Button -->
+        <a href="https://github.com/alok0770" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-100 hover:text-white border border-slate-700 hover:border-blue-500/60 font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 shadow-lg shadow-black/40">
+          <i data-lucide="github" class="w-4 h-4 text-blue-400"></i>
+          <span>GitHub (@alok0770)</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400"></i>
+        </a>
+
+        <button id="copy-email-hero" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 hover:border-blue-500/40 font-medium text-sm transition-all duration-200 hover:-translate-y-0.5">
+          <i data-lucide="copy" class="w-4 h-4 text-blue-400"></i>
+          <span>Copy Email</span>
+        </button>
+      </div>
+
+      <!-- Social & Direct Contact Links -->
+      <div class="flex flex-wrap items-center justify-center gap-3 text-slate-400">
+        <a href="https://leetcode.com/u/Alok_0770/" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-amber-500/80 text-slate-200 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-2 text-xs font-mono font-medium shadow-sm group" title="LeetCode Profile">
+          <svg class="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.483.438a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.874 5.874 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.862 5.86 5.86 0 0 0 3.616-.706l4.23-2.572a1.358 1.358 0 0 0 .547-.648 1.353 1.353 0 0 0-.74-1.748 1.374 1.374 0 0 0-1.747.74l-4.23 2.572a3.17 3.17 0 0 1-2.204.385 3.205 3.205 0 0 1-2.602-2.081 3.208 3.208 0 0 1-.024-2.169 3.168 3.168 0 0 1 1.048-1.524l3.855-4.126 5.405-5.787a1.377 1.377 0 0 0-.022-1.921 1.37 1.37 0 0 0-.961-.438z" fill="#FFA116"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.924 10.378l-5.69 3.456a1.368 1.368 0 0 0-.547.648 1.356 1.356 0 0 0 .74 1.748 1.377 1.377 0 0 0 1.748-.74l5.689-3.456a1.375 1.375 0 0 0-.74-2.456 1.36 1.36 0 0 0-1.2.8z" fill="#E7A41E"/>
+          </svg>
+          <span>leetcode.com/Alok_0770</span>
+        </a>
+        <a href="https://github.com/alok0770" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-slate-500 text-slate-200 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-2 text-xs font-mono font-medium shadow-sm group" title="GitHub Profile">
+          <svg class="w-4 h-4 shrink-0 fill-current text-white transition-transform group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>github.com/alok0770</span>
+        </a>
+        <a href="mailto:alokrana0770@gmail.com" class="px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-red-500/60 text-slate-200 hover:text-white hover:bg-slate-800 transition-all flex items-center gap-2 text-xs font-mono font-medium shadow-sm group" title="Direct Email via Gmail">
+          <svg class="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#4caf50" d="M45,16.2l-5,2.75l-5,4.75L35,40h7c1.657,0,3-1.343,3-3V16.2z"/>
+            <path fill="#1e88e5" d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"/>
+            <polygon fill="#e53935" points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"/>
+            <path fill="#c62828" d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C8.132,7.553,5.647,8.081,4.551,9.972L3,12.298z"/>
+            <path fill="#fbc02d" d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341c1.744-1.306,4.229-0.778,5.325,1.113L45,12.298z"/>
+          </svg>
+          <span>alokrana0770@gmail.com</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-blue-500 text-slate-200 hover:text-white hover:bg-slate-800 transition-all flex items-center justify-center group" title="LinkedIn Profile">
+          <svg class="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.62 1.62 0 1 0 0-3.24 1.62 1.62 0 0 0 0 3.24M7.86 18.5V10.13H5.07V18.5h2.79z"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- BENTO GRID SHOWCASE (ABOUT & HIGHLIGHTS) -->
+    <section id="about" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-blue-400 font-mono">Foundation & Approach</span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">Deep Fundamentals Over Quick Shortcuts</h2>
+        </div>
+        <p class="text-sm text-slate-400 max-w-md">
+          Focusing on Core Java, object-oriented principles, and methodical problem-solving to build a strong software engineering foundation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Bento Card 1: Backend Engineering & Modern Java (Span 2 cols on desktop) -->
+        <div class="md:col-span-2 glass-card rounded-2xl p-7 flex flex-col justify-between glow-card relative overflow-hidden group">
+          <div class="absolute -top-16 -right-16 w-48 h-48 bg-blue-600/15 rounded-full blur-2xl group-hover:bg-blue-600/25 transition-all"></div>
+          
+          <div class="space-y-3 relative z-10">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+              <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Backend Engineering & Modern Java Architecture</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Specializing in backend system design — Java SE, Java 8 (Lambdas, functional programming), JDBC, Maven, Docker, and advancing into the Spring ecosystem (Spring Boot, Spring Data JPA, Spring AI). Focused on clean OOP principles, high-throughput REST APIs, relational databases, and resilient server-side logic.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-800/80 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded-md bg-slate-900/90 border border-slate-800 text-blue-300">Java SE / Java 8</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900/90 border border-slate-800 text-blue-300">OOP & Collections</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900/90 border border-slate-800 text-blue-300">JDBC & Maven</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900/90 border border-slate-800 text-blue-300">Spring Boot Roadmap</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900/90 border border-slate-800 text-blue-300">Docker Basics</span>
+            <span class="px-2.5 py-1 rounded-md bg-slate-900/90 border border-slate-800 text-blue-300">RESTful APIs</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: Algorithmic Problem Solving & LeetCode -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between glow-card relative overflow-hidden group">
+          <div class="space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.483.438a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.874 5.874 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.862 5.86 5.86 0 0 0 3.616-.706l4.23-2.572a1.358 1.358 0 0 0 .547-.648 1.353 1.353 0 0 0-.74-1.748 1.374 1.374 0 0 0-1.747.74l-4.23 2.572a3.17 3.17 0 0 1-2.204.385 3.205 3.205 0 0 1-2.602-2.081 3.208 3.208 0 0 1-.024-2.169 3.168 3.168 0 0 1 1.048-1.524l3.855-4.126 5.405-5.787a1.377 1.377 0 0 0-.022-1.921 1.37 1.37 0 0 0-.961-.438z" fill="#FFA116"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.924 10.378l-5.69 3.456a1.368 1.368 0 0 0-.547.648 1.356 1.356 0 0 0 .74 1.748 1.377 1.377 0 0 0 1.748-.74l5.689-3.456a1.375 1.375 0 0 0-.74-2.456 1.36 1.36 0 0 0-1.2.8z" fill="#E7A41E"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white">Algorithmic Problem Solving</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Active problem solving in Java with emphasis on asymptotic complexity analysis (Big-O), fundamental data structures, and optimal runtime efficiency.
+            </p>
+          </div>
+
+          <a href="https://leetcode.com/u/Alok_0770/" target="_blank" rel="noopener noreferrer" class="mt-6 flex items-center justify-between text-xs text-amber-400 hover:text-amber-300 font-mono transition-colors group">
+            <span class="flex items-center gap-2">
+              <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.483.438a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.874 5.874 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.862 5.86 5.86 0 0 0 3.616-.706l4.23-2.572a1.358 1.358 0 0 0 .547-.648 1.353 1.353 0 0 0-.74-1.748 1.374 1.374 0 0 0-1.747.74l-4.23 2.572a3.17 3.17 0 0 1-2.204.385 3.205 3.205 0 0 1-2.602-2.081 3.208 3.208 0 0 1-.024-2.169 3.168 3.168 0 0 1 1.048-1.524l3.855-4.126 5.405-5.787a1.377 1.377 0 0 0-.022-1.921 1.37 1.37 0 0 0-.961-.438z" fill="#FFA116"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.924 10.378l-5.69 3.456a1.368 1.368 0 0 0-.547.648 1.356 1.356 0 0 0 .74 1.748 1.377 1.377 0 0 0 1.748-.74l5.689-3.456a1.375 1.375 0 0 0-.74-2.456 1.36 1.36 0 0 0-1.2.8z" fill="#E7A41E"/>
+              </svg>
+              <span>leetcode.com/Alok_0770</span>
+            </span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <!-- Bento Card 3: Academic Stage -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between glow-card">
+          <div class="space-y-2">
+            <span class="text-xs font-mono text-blue-400 uppercase tracking-wider">Current Stage</span>
+            <div class="text-4xl font-extrabold text-white tracking-tight">BCA</div>
+            <p class="text-sm font-medium text-slate-200">3rd Year (5th Semester)</p>
+            <p class="text-xs text-slate-400 leading-relaxed">Veer Madho Singh Bhandari Institute of Technology, Uttarkashi.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span>Specialization Focus</span>
+            <span class="text-blue-400 font-mono font-medium">Java Backend Track</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 4: Backend Muscle + Vibe Coding Frontend -->
+        <div class="md:col-span-2 glass-card rounded-2xl p-7 flex flex-col justify-between glow-card relative overflow-hidden">
+          <div class="space-y-3">
+            <div class="flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-wider">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>Honest Engineering Philosophy</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Backend-First Muscle • AI-Driven Vibe Coding Frontend</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              I am a dedicated backend engineer who puts 90% of engineering rigor into server architecture, database schemas, security, and clean code. For user interfaces, I rely on foundational HTML/CSS/JS supercharged with modern AI vibe coding to prototype and ship sleek, responsive full-stack apps at 3x velocity.
+            </p>
+          </div>
+
+          <div class="mt-6 flex items-center gap-6 text-xs text-slate-400">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="cpu" class="w-4 h-4 text-blue-400"></i>
+              <span>Deep Server Logic</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="zap" class="w-4 h-4 text-cyan-400"></i>
+              <span>AI Vibe-Coded UI</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i>
+              <span>High Delivery Velocity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SELECTED PROJECTS SECTION -->
+    <section id="projects" class="space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-blue-400 font-mono">Selected Work & Practice</span>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">Featured Projects & Practice</h2>
+        </div>
+
+        <!-- Project Category Filters -->
+        <div class="flex flex-wrap items-center gap-1.5 bg-slate-900/80 p-1 rounded-xl border border-slate-800 text-xs">
+          <button class="filter-btn active px-3.5 py-1.5 rounded-lg font-medium transition-all bg-blue-600 text-white shadow-lg shadow-blue-500/20" data-filter="all">All</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all" data-filter="java">Java Projects</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all" data-filter="dsa">Problem Solving</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all" data-filter="concept">Planned Concept</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Project 1: ChatSphere (CoreChat v2.0) -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden glow-card flex flex-col justify-between" data-category="java">
+          <div class="min-h-48 bg-gradient-to-br from-blue-950/70 via-slate-950 to-slate-950 p-6 flex flex-col justify-between border-b border-slate-800/80 relative group">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[11px] font-mono flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Live Web App
+                </span>
+                <span class="px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 text-[11px] font-mono">
+                  Zero Frameworks
+                </span>
+              </div>
+              <button onclick="openModal('corechat')" class="p-2 rounded-lg bg-slate-900/90 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700/60 text-xs flex items-center gap-1 transition-all" title="View details">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                <span>Quick View</span>
+              </button>
+            </div>
+            <div>
+              <div class="text-xs text-blue-400 font-mono mb-1">100% Core Java • Native HttpServer • Gemini AI Integration</div>
+              <div class="text-2xl font-extrabold text-white tracking-tight flex items-center gap-2">
+                <span>ChatSphere (CoreChat v2.0)</span>
+              </div>
+              <div class="mt-2.5 flex items-center justify-between text-[11px] font-mono text-slate-400 bg-slate-950/80 px-2.5 py-1.5 rounded-lg border border-slate-800/80">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Native HttpServer: Port 8080</span>
+                </span>
+                <span class="text-blue-400">@SphereAI Active</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed">
+              A full-stack real-time 1-on-1 chat platform built in <strong class="text-white">100% pure Core Java & Java 8 without external frameworks</strong> (No Spring Boot). Handles HTTP requests directly via native <code class="text-blue-300 bg-slate-900/80 px-1 py-0.5 rounded text-xs">HttpServer</code>, features native <strong class="text-blue-300">Google Gemini AI Assistant (@SphereAI)</strong>, and is deployed live on cloud container.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-blue-300">Core Java</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-blue-300">Java 8</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-blue-300">Native HttpServer</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-cyan-300">Google Gemini AI</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-emerald-300">Zero-Framework</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-slate-300">Docker</span>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <a href="https://chatsphere-d261.onrender.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold text-xs shadow-lg shadow-blue-500/25 transition-all duration-200 hover:-translate-y-0.5">
+                    <i data-lucide="play" class="w-3.5 h-3.5 fill-current"></i>
+                    <span>Live Demo</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                  </a>
+                  <a href="https://github.com/alok0770/ChatSphere" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors">
+                    <i data-lucide="github" class="w-4 h-4 text-blue-400"></i>
+                    <span>Source Code</span>
+                  </a>
+                </div>
+                <button onclick="openModal('corechat')" class="inline-flex items-center gap-1 text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors">
+                  <span>Architecture Details</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Library Management System -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden glow-card flex flex-col justify-between" data-category="java">
+          <div class="min-h-48 bg-gradient-to-br from-cyan-950/60 via-slate-950 to-slate-950 p-6 flex flex-col justify-between border-b border-slate-800/80 relative group">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[11px] font-mono">
+                Java Core Application • In Progress
+              </span>
+              <button onclick="openModal('librarymanagement')" class="p-2 rounded-lg bg-slate-900/90 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700/60 text-xs flex items-center gap-1 transition-all" title="View details">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                <span>Quick View</span>
+              </button>
+            </div>
+            <div>
+              <div class="text-xs text-cyan-400 font-mono mb-1">OOP Principles • Institutional Architecture</div>
+              <div class="text-2xl font-extrabold text-white tracking-tight">Library Management System</div>
+              <div class="mt-2.5 flex items-center justify-between text-[11px] font-mono text-slate-400 bg-slate-950/80 px-2.5 py-1.5 rounded-lg border border-slate-800/80">
+                <span class="text-cyan-400">javac Main.java &amp;&amp; java Main</span>
+                <span class="text-slate-500">Scanner Crash Protected</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed">
+              A console-based Library Management System in Java designed for institutional workflows to handle member registrations with duplicate roll-number validation, member search & removal, and input crash protection against invalid scanner entries.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-cyan-300">Java</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-cyan-300">OOP (Classes & Objects)</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-cyan-300">Collections (ArrayList)</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-slate-300">Exception Handling</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-slate-300">DRY Architecture</span>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <a href="https://github.com/alok0770/library-management-system-java" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors">
+                  <i data-lucide="github" class="w-4 h-4 text-cyan-400"></i>
+                  <span>GitHub Repository</span>
+                </a>
+                <button onclick="openModal('librarymanagement')" class="inline-flex items-center gap-1 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
+                  <span>Architecture Details</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Uttarkashi CafeHub -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden glow-card flex flex-col justify-between" data-category="concept">
+          <div class="min-h-48 bg-gradient-to-br from-indigo-950/60 via-slate-950 to-slate-950 p-6 flex flex-col justify-between border-b border-slate-800/80 relative group">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-[11px] font-mono">
+                Community Platform Concept
+              </span>
+              <button onclick="openModal('cafediscovery')" class="p-2 rounded-lg bg-slate-900/90 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700/60 text-xs flex items-center gap-1 transition-all" title="View details">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                <span>Quick View</span>
+              </button>
+            </div>
+            <div>
+              <div class="text-xs text-indigo-400 font-mono mb-1">Local Ecosystem • Unified Platform</div>
+              <div class="text-2xl font-extrabold text-white tracking-tight">Uttarkashi CafeHub</div>
+              <div class="mt-2.5 flex items-center justify-between text-[11px] font-mono text-slate-400 bg-slate-950/80 px-2.5 py-1.5 rounded-lg border border-slate-800/80">
+                <span class="text-indigo-400">Relational DB Schema Design</span>
+                <span class="text-slate-500">Spring Boot Roadmap</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed">
+              A planned unified discovery & direct-ordering platform representing all cafes across Uttarkashi. Centralizes menus, pricing, and live operating hours with direct cafe-managed delivery to eliminate heavy aggregator commission costs.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-indigo-300">System Architecture</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-indigo-300">Relational DB Modeling</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-blue-300">Spring Boot Roadmap</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-slate-300">Vibe-Coded Web UI</span>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400">
+                  <i data-lucide="compass" class="w-4 h-4 text-indigo-400"></i>
+                  <span>Architecture & Concept</span>
+                </span>
+                <button onclick="openModal('cafediscovery')" class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+                  <span>Concept & Design</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Java DSA & Algorithmic Problem Solving -->
+        <div class="project-card glass-card rounded-2xl overflow-hidden glow-card flex flex-col justify-between" data-category="dsa">
+          <div class="min-h-48 bg-gradient-to-br from-amber-950/50 via-slate-950 to-slate-950 p-6 flex flex-col justify-between border-b border-slate-800/80 relative group">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-mono flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.483.438a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.874 5.874 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.862 5.86 5.86 0 0 0 3.616-.706l4.23-2.572a1.358 1.358 0 0 0 .547-.648 1.353 1.353 0 0 0-.74-1.748 1.374 1.374 0 0 0-1.747.74l-4.23 2.572a3.17 3.17 0 0 1-2.204.385 3.205 3.205 0 0 1-2.602-2.081 3.208 3.208 0 0 1-.024-2.169 3.168 3.168 0 0 1 1.048-1.524l3.855-4.126 5.405-5.787a1.377 1.377 0 0 0-.022-1.921 1.37 1.37 0 0 0-.961-.438z" fill="#FFA116"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16.924 10.378l-5.69 3.456a1.368 1.368 0 0 0-.547.648 1.356 1.356 0 0 0 .74 1.748 1.377 1.377 0 0 0 1.748-.74l5.689-3.456a1.375 1.375 0 0 0-.74-2.456 1.36 1.36 0 0 0-1.2.8z" fill="#E7A41E"/>
+                </svg>
+                <span>Algorithmic Problem Solving • LeetCode</span>
+              </span>
+              <button onclick="openModal('dsalab')" class="p-2 rounded-lg bg-slate-900/90 text-slate-300 hover:text-white hover:bg-slate-800 border border-slate-700/60 text-xs flex items-center gap-1 transition-all" title="View details">
+                <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i>
+                <span>Quick View</span>
+              </button>
+            </div>
+            <div>
+              <div class="text-xs text-amber-400 font-mono mb-1">Computational Logic • Complexity Optimization</div>
+              <div class="text-2xl font-extrabold text-white tracking-tight">Algorithmic Problem Solving in Java</div>
+              <div class="mt-2.5 flex items-center justify-between text-[11px] font-mono text-slate-400 bg-slate-950/80 px-2.5 py-1.5 rounded-lg border border-slate-800/80">
+                <span class="text-amber-400">Asymptotic Big-O Analysis</span>
+                <span class="text-slate-500">Java 8 + LeetCode</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-4 flex-1 flex flex-col justify-between">
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Active algorithmic problem solving in Java with a strong emphasis on asymptotic complexity analysis, efficient data structure utilization, and writing clean, scalable logic. Regular practice on LeetCode and dedicated GitHub code repositories.
+            </p>
+
+            <div class="space-y-4">
+              <div class="flex flex-wrap gap-1.5 text-xs font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-amber-300">Java</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-amber-300">Data Structures</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-amber-300">Complexity Analysis (Big-O)</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-blue-300">LeetCode</span>
+                <span class="px-2 py-0.5 rounded bg-slate-900/90 border border-slate-800 text-slate-300">Clean Logic</span>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <a href="https://leetcode.com/u/Alok_0770/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 text-amber-300 font-semibold text-xs border border-amber-500/40 shadow-sm transition-all duration-200 hover:-translate-y-0.5 group">
+                    <svg class="w-4 h-4 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.483.438a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.874 5.874 0 0 0 .349 1.017 5.938 5.938 0 0 0 .4818 3.862 5.86 5.86 0 0 0 3.616-.706l4.23-2.572a1.358 1.358 0 0 0 .547-.648 1.353 1.353 0 0 0-.74-1.748 1.374 1.374 0 0 0-1.747.74l-4.23 2.572a3.17 3.17 0 0 1-2.204.385 3.205 3.205 0 0 1-2.602-2.081 3.208 3.208 0 0 1-.024-2.169 3.168 3.168 0 0 1 1.048-1.524l3.855-4.126 5.405-5.787a1.377 1.377 0 0 0-.022-1.921 1.37 1.37 0 0 0-.961-.438z" fill="#FFA116"/>
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M16.924 10.378l-5.69 3.456a1.368 1.368 0 0 0-.547.648 1.356 1.356 0 0 0 .74 1.748 1.377 1.377 0 0 0 1.748-.74l5.689-3.456a1.375 1.375 0 0 0-.74-2.456 1.36 1.36 0 0 0-1.2.8z" fill="#E7A41E"/>
+                    </svg>
+                    <span>LeetCode Profile</span>
+                    <i data-lucide="external-link" class="w-3 h-3"></i>
+                  </a>
+                  <a href="https://github.com/alok0770" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-300 hover:text-white transition-colors group">
+                    <svg class="w-4 h-4 shrink-0 fill-current text-white transition-transform group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                    </svg>
+                    <span>GitHub Repos</span>
+                  </a>
+                </div>
+                <button onclick="openModal('dsalab')" class="inline-flex items-center gap-1 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors">
+                  <span>Architecture Details</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECH ARSENAL / SKILLS SECTION -->
+    <section id="stack" class="space-y-8">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-blue-400 font-mono">Technical Foundation</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">Programming Skills & Learning Roadmap</h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-xl">
+          An honest overview of the technologies I have studied and practice regularly, along with the backend frameworks on my immediate learning roadmap.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Java & Core Language -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 glow-card">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-blue-400">
+              <i data-lucide="code" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Java Core & Java 8</h3>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Object-Oriented Programming (OOP)
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Collections Framework (List, Map, Set)
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Exception Handling & Input Safety
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> File I/O & Streams
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Generics & Enums
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Java 8 Lambdas & Functional Interfaces
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-blue-400"></i> Comparator & Multithreading Basics
+            </span>
+          </div>
+        </div>
+
+        <!-- Databases & Spring Ecosystem -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 glow-card">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+              <i data-lucide="server" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Backend & Spring Ecosystem</h3>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-cyan-400"></i> SQL Queries & Schema Design
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-cyan-400"></i> JDBC & Maven
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-cyan-400"></i> Docker Containerization
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-cyan-400"></i> RESTful API Architecture
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-blue-500/30 text-blue-300 flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-3 h-3 text-blue-400"></i> Spring Framework & Spring Boot
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-blue-500/30 text-blue-300 flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-3 h-3 text-blue-400"></i> Spring Data JPA & Hibernate
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-blue-500/30 text-blue-300 flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-3 h-3 text-blue-400"></i> Spring AI & Spring Security
+            </span>
+          </div>
+        </div>
+
+        <!-- Frontend & Workflow -->
+        <div class="glass-card rounded-2xl p-6 space-y-4 glow-card">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400">
+              <i data-lucide="terminal" class="w-4 h-4"></i>
+            </div>
+            <h3 class="font-bold text-white text-base">Frontend & Developer Workflow</h3>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-cyan-500/40 text-cyan-300 flex items-center gap-1.5 font-medium">
+              <i data-lucide="sparkles" class="w-3 h-3 text-cyan-400"></i> AI & Vibe Coding Workflow
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-sky-400"></i> HTML5 & CSS3 Basics
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-sky-400"></i> JavaScript Fundamentals
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-sky-400"></i> IntelliJ IDEA (Primary IDE)
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-sky-400"></i> Git & GitHub Version Control
+            </span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="check" class="w-3 h-3 text-sky-400"></i> Linux / Terminal Basics
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY / EXPERIENCE TIMELINE -->
+    <section id="experience" class="space-y-8">
+      <div>
+        <span class="text-xs uppercase tracking-widest text-blue-400 font-mono">Milestones</span>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">Education & Learning Journey</h2>
+      </div>
+
+      <div class="relative border-l border-slate-800 pl-6 sm:pl-8 space-y-10 ml-2">
+        <!-- Milestone 1: BCA 3rd Year -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-blue-600 border-4 border-[#030712] shadow-lg group-hover:scale-125 transition-transform"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">BCA Third Year — Java Backend Deep Dive</h3>
+            <span class="text-xs font-mono text-slate-500">2024 — Present</span>
+          </div>
+          <p class="text-xs font-medium text-blue-400 mb-2">Veer Madho Singh Bhandari Institute of Technology, Uttarkashi (5th Semester)</p>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-2xl">
+            Building modular Java console projects like CoreChat, practicing Data Structures & Algorithms, and studying Java 8 features (Lambdas, functional interfaces). Actively strengthening SQL database fundamentals and preparing for JDBC, Maven, and Spring Boot.
+          </p>
+        </div>
+
+        <!-- Milestone 2: Core Java Foundation -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-700 border-4 border-[#030712] shadow-lg group-hover:bg-blue-500 transition-colors"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Core Java & Object-Oriented Programming Foundation</h3>
+            <span class="text-xs font-mono text-slate-500">2023 — 2024</span>
+          </div>
+          <p class="text-xs font-medium text-slate-400 mb-2">Academic & Self-Directed Practice</p>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-2xl">
+            In-depth study of Core Java fundamentals: classes, objects, encapsulation, inheritance, polymorphism, exception handling, and file operations. Built working utilities like the Java Mini Audio Player using the Java Sound API.
+          </p>
+        </div>
+
+        <!-- Milestone 3: Beginning of Degree -->
+        <div class="relative group">
+          <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-slate-800 border-4 border-[#030712] shadow-lg group-hover:bg-cyan-500 transition-colors"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-1">
+            <h3 class="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">Enrolled in Bachelor of Computer Applications (BCA)</h3>
+            <span class="text-xs font-mono text-slate-500">2022 — 2023</span>
+          </div>
+          <p class="text-xs font-medium text-slate-400 mb-2">Veer Madho Singh Bhandari Institute of Technology, Uttarkashi</p>
+          <p class="text-sm text-slate-400 leading-relaxed max-w-2xl">
+            Initiated formal computer science education. Studied programming fundamentals, computer system architecture, and discrete mathematics, which sparked my deep commitment toward software development and backend systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="glass-card rounded-3xl p-8 sm:p-12 glow-card relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start relative z-10">
+        <!-- Contact Info Left -->
+        <div class="space-y-6">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-blue-400 font-mono">Let's Connect</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">Open for internships, mentorship, & tech conversations.</h2>
+          </div>
+
+          <p class="text-slate-400 text-sm leading-relaxed max-w-md">
+            I am currently seeking Java backend internships, opportunities to collaborate on real projects, and guidance from experienced software engineers.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <!-- Email Item -->
+            <div class="flex items-center gap-3 text-sm text-slate-300">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-2.5 shadow-inner">
+                <svg class="w-5 h-5 shrink-0" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                  <path fill="#4caf50" d="M45,16.2l-5,2.75l-5,4.75L35,40h7c1.657,0,3-1.343,3-3V16.2z"/>
+                  <path fill="#1e88e5" d="M3,16.2l3.614,1.71L13,23.7V40H6c-1.657,0-3-1.343-3-3V16.2z"/>
+                  <polygon fill="#e53935" points="35,11.2 24,19.45 13,11.2 12,17 13,23.7 24,31.95 35,23.7 36,17"/>
+                  <path fill="#c62828" d="M3,12.298V16.2l10,7.5V11.2L9.876,8.859C8.132,7.553,5.647,8.081,4.551,9.972L3,12.298z"/>
+                  <path fill="#fbc02d" d="M45,12.298V16.2l-10,7.5V11.2l3.124-2.341c1.744-1.306,4.229-0.778,5.325,1.113L45,12.298z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-slate-500">Direct Email (Gmail)</div>
+                <div class="font-mono text-xs sm:text-sm text-white select-all">alokrana0770@gmail.com</div>
+              </div>
+              <button id="copy-email-btn" class="ml-auto p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors border border-slate-800 text-xs flex items-center gap-1" title="Copy email address">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">Copy</span>
+              </button>
+            </div>
+
+            <!-- Location Item -->
+            <div class="flex items-center gap-3 text-sm text-slate-300">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-500">Location</div>
+                <div class="text-xs sm:text-sm text-white">Uttarakhand, India (Open for Remote & Internships)</div>
+              </div>
+            </div>
+
+            <!-- Response Time -->
+            <div class="flex items-center gap-3 text-sm text-slate-300">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-blue-400">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-500">Response Time</div>
+                <div class="text-xs sm:text-sm text-white">Usually replies within 12–24 hours</div>
+              </div>
+            </div>
+
+            <!-- Quick Profiles Badges -->
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap items-center gap-2">
+              <a href="https://leetcode.com/u/Alok_0770/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-amber-500/80 text-slate-300 hover:text-white transition-all flex items-center gap-2 text-xs font-mono group" title="LeetCode Profile">
+                <svg class="w-3.5 h-3.5 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.483.438a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.874 5.874 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.862 5.86 5.86 0 0 0 3.616-.706l4.23-2.572a1.358 1.358 0 0 0 .547-.648 1.353 1.353 0 0 0-.74-1.748 1.374 1.374 0 0 0-1.747.74l-4.23 2.572a3.17 3.17 0 0 1-2.204.385 3.205 3.205 0 0 1-2.602-2.081 3.208 3.208 0 0 1-.024-2.169 3.168 3.168 0 0 1 1.048-1.524l3.855-4.126 5.405-5.787a1.377 1.377 0 0 0-.022-1.921 1.37 1.37 0 0 0-.961-.438z" fill="#FFA116"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M16.924 10.378l-5.69 3.456a1.368 1.368 0 0 0-.547.648 1.356 1.356 0 0 0 .74 1.748 1.377 1.377 0 0 0 1.748-.74l5.689-3.456a1.375 1.375 0 0 0-.74-2.456 1.36 1.36 0 0 0-1.2.8z" fill="#E7A41E"/>
+                </svg>
+                <span>LeetCode</span>
+              </a>
+              <a href="https://github.com/alok0770" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-slate-500 text-slate-300 hover:text-white transition-all flex items-center gap-2 text-xs font-mono group" title="GitHub Profile">
+                <svg class="w-3.5 h-3.5 shrink-0 fill-current text-white transition-transform group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-900/90 border border-slate-800 hover:border-blue-500 text-slate-300 hover:text-white transition-all flex items-center gap-2 text-xs font-mono group" title="LinkedIn Profile">
+                <svg class="w-3.5 h-3.5 shrink-0 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.62 1.62 0 1 0 0-3.24 1.62 1.62 0 0 0 0 3.24M7.86 18.5V10.13H5.07V18.5h2.79z"/>
+                </svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form Right -->
+        <form id="contact-form" class="space-y-4 bg-slate-950/70 p-6 sm:p-8 rounded-2xl border border-slate-800/90 backdrop-blur-md">
+          <input type="hidden" name="access_key" id="web3forms-key" value="6a5b0242-9cb6-45d2-853c-20bca065cd6f">
+          <input type="hidden" name="subject" value="New Portfolio Inquiry for Alok Rana">
+          <input type="hidden" name="from_name" value="Portfolio Contact Form">
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          
+          <div>
+            <label for="name" class="block text-xs font-medium text-slate-300 mb-1.5">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="Alok Rana" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-slate-100 placeholder-slate-500 outline-none transition-all">
+          </div>
+
+          <div>
+            <label for="email" class="block text-xs font-medium text-slate-300 mb-1.5">Your Email</label>
+            <input type="email" id="email" name="email" required placeholder="alok@example.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-slate-100 placeholder-slate-500 outline-none transition-all">
+          </div>
+
+          <div>
+            <label for="project-type" class="block text-xs font-medium text-slate-300 mb-1.5">Regarding</label>
+            <select id="project-type" name="regarding" class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-slate-200 outline-none transition-all">
+              <option value="Java Backend Internship / Junior Opportunity">Java Backend Internship / Junior Opportunity</option>
+              <option value="Technical Mentorship / Advice">Technical Mentorship / Advice</option>
+              <option value="Project Collaboration">Project Collaboration</option>
+              <option value="Just saying hello!">Just saying hello!</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-xs font-medium text-slate-300 mb-1.5">Your Message</label>
+            <textarea id="message" name="message" rows="4" required placeholder="Write your message here..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-800 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-sm text-slate-100 placeholder-slate-500 outline-none transition-all resize-none"></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn" class="w-full py-3 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition-all duration-200 hover:-translate-y-0.5">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span id="submit-text">Send Message</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- QUICK VIEW PROJECT MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="relative w-full max-w-2xl bg-[#030712] border border-slate-800 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8 space-y-6" onclick="event.stopPropagation()">
+      <!-- Modal Close Button -->
+      <button onclick="closeModal()" class="absolute top-5 right-5 p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors" aria-label="Close modal">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Modal Content Container -->
+      <div id="modal-content" class="space-y-4">
+        <!-- Injected dynamically via script.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/80 py-8 relative z-10 text-xs text-slate-400">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 font-mono">
+        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+        <span>Local Time (IST): <strong id="live-ist-time" class="text-slate-200">--:--:--</strong></span>
+      </div>
+
+      <div class="text-center">
+        Designed & coded with precision by <span class="text-slate-200 font-semibold">Alok Rana</span> • BCA Student & Aspiring Java Backend Developer
+      </div>
+
+      <!-- Back to Top Button -->
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-1.5 hover:text-blue-400 transition-colors">
+        <span>Back to top</span>
+        <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>

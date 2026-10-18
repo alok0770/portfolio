@@ -1,0 +1,254 @@
+/* Modern Blue & Black Theme with Dark/Light Mode Generation */
+:root {
+  --bg-primary: #030712;
+  --bg-secondary: #0b1329;
+  --bg-card: rgba(11, 19, 41, 0.65);
+  --border-color: rgba(30, 41, 59, 0.8);
+  --text-primary: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-sky: #38bdf8;
+  --glow-color: rgba(59, 130, 246, 0.35);
+}
+
+/* Light Theme Variables */
+html.light {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(226, 232, 240, 0.9);
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --accent-blue: #2563eb;
+  --accent-cyan: #0284c7;
+  --accent-sky: #0ea5e9;
+  --glow-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Smooth Transition for Theme Switch */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Text Selection */
+::selection {
+  background: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+}
+
+/* Gradient Text Utilities */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+html.light .text-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glowing Border & Card Effect */
+.glow-card {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(6, 182, 212, 0.2), transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+.glow-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
+}
+
+/* Radial Glow Backgrounds */
+.bg-radial-blue {
+  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.18) 0%, rgba(3, 7, 18, 0) 70%);
+}
+html.light .bg-radial-blue {
+  background: radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.12) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+.bg-radial-cyan {
+  background: radial-gradient(circle at 80% 30%, rgba(6, 182, 212, 0.12) 0%, rgba(3, 7, 18, 0) 70%);
+}
+html.light .bg-radial-cyan {
+  background: radial-gradient(circle at 80% 30%, rgba(6, 182, 212, 0.08) 0%, rgba(248, 250, 252, 0) 70%);
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+html.light .bg-grid-pattern {
+  background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Glassmorphism Styles */
+.glass-nav {
+  background: rgba(3, 7, 18, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+}
+html.light .glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.glass-card {
+  background: rgba(11, 19, 41, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+}
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  background: rgba(2, 6, 23, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+html.light .modal-overlay {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+/* Neon Pulse Indicator */
+.neon-pulse-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+}
+
+/* Light Theme Element Overrides */
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+html.light .text-white,
+html.light .dark\:text-white {
+  color: #0f172a !important;
+}
+html.light .text-slate-100 {
+  color: #0f172a !important;
+}
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+html.light .text-slate-400 {
+  color: #64748b !important;
+}
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/70,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+html.light .border-slate-800,
+html.light .border-slate-800\/70,
+html.light .border-slate-800\/80,
+html.light .border-slate-800\/90 {
+  border-color: #e2e8f0 !important;
+}
+html.light .bg-slate-950\/70,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-950 {
+  background-color: #f1f5f9 !important;
+}
+html.light #project-modal > div {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+/* Body Scroll Lock when modal is active */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* GPU Hardware Acceleration for Ambient Glow */
+.bg-radial-blue,
+.bg-radial-cyan {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Mobile Performance & Battery Optimization */
+@media (max-width: 640px) {
+  .glass-nav, .glass-card, .modal-overlay {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
