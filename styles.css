@@ -571,3 +571,161 @@ html.light .theme-purple {
   }
 }
 
+/* ========================================================
+   Hero 3D Floating Showcase Box & Animated Logo Pods
+   ======================================================== */
+
+.hero-showcase-box {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(3, 7, 18, 0.96) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 25px 60px -15px rgba(0, 0, 0, 0.9),
+    0 0 35px -5px rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.hero-showcase-box:hover {
+  border-color: rgba(59, 130, 246, 0.65);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.32),
+    0 32px 75px -15px rgba(0, 0, 0, 0.95),
+    0 0 50px -5px rgba(59, 130, 246, 0.28);
+}
+
+/* Staggered Floating Levitation Keyframes */
+@keyframes floatPod1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(1deg);
+  }
+}
+
+@keyframes floatPod2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1.2deg);
+  }
+}
+
+@keyframes floatPod3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes floatPod4 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-11px) rotate(-0.9deg);
+  }
+}
+
+.animate-float-pod-1 {
+  animation: floatPod1 4.4s ease-in-out infinite;
+}
+
+.animate-float-pod-2 {
+  animation: floatPod2 5.0s ease-in-out infinite 0.7s;
+}
+
+.animate-float-pod-3 {
+  animation: floatPod3 4.6s ease-in-out infinite 1.4s;
+}
+
+.animate-float-pod-4 {
+  animation: floatPod4 5.2s ease-in-out infinite 2.1s;
+}
+
+/* Floating Logo Pods */
+.dock-pod {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.28s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  will-change: transform;
+}
+
+.dock-pod:hover {
+  transform: translateY(-8px) scale(1.04) translateZ(32px) !important;
+}
+
+/* Pod Themes */
+.dock-pod-leetcode {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(20, 20, 24, 0.95) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 18px -3px rgba(245, 158, 11, 0.18);
+}
+.dock-pod-leetcode:hover {
+  border-color: rgba(245, 158, 11, 0.85);
+  box-shadow: 0 16px 35px -5px rgba(245, 158, 11, 0.35), 0 0 28px rgba(245, 158, 11, 0.3);
+}
+
+.dock-pod-github {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.14) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 18px -3px rgba(59, 130, 246, 0.18);
+}
+.dock-pod-github:hover {
+  border-color: rgba(59, 130, 246, 0.85);
+  box-shadow: 0 16px 35px -5px rgba(59, 130, 246, 0.35), 0 0 28px rgba(59, 130, 246, 0.3);
+}
+
+.dock-pod-gmail {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.14) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 18px -3px rgba(239, 68, 68, 0.18);
+}
+.dock-pod-gmail:hover {
+  border-color: rgba(239, 68, 68, 0.85);
+  box-shadow: 0 16px 35px -5px rgba(239, 68, 68, 0.35), 0 0 28px rgba(239, 68, 68, 0.3);
+}
+
+.dock-pod-linkedin {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.14) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 0 18px -3px rgba(14, 165, 233, 0.18);
+}
+.dock-pod-linkedin:hover {
+  border-color: rgba(14, 165, 233, 0.85);
+  box-shadow: 0 16px 35px -5px rgba(14, 165, 233, 0.35), 0 0 28px rgba(14, 165, 233, 0.3);
+}
+
+/* Light Mode Overrides for Dock Pods */
+html.light .hero-showcase-box {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .dock-pod-leetcode {
+  background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+
+html.light .dock-pod-github {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
+html.light .dock-pod-gmail {
+  background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+html.light .dock-pod-linkedin {
+  background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%) !important;
+  border-color: rgba(14, 165, 233, 0.4) !important;
+}
+

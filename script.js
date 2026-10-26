@@ -66,6 +66,7 @@ function setupEmailCopy() {
 
   const copyHeroBtn = document.getElementById('copy-email-hero');
   const copyContactBtn = document.getElementById('copy-email-btn');
+  const copyDockBtn = document.getElementById('dock-copy-email');
 
   const copyAction = async () => {
     try {
@@ -84,6 +85,7 @@ function setupEmailCopy() {
 
   if (copyHeroBtn) copyHeroBtn.addEventListener('click', copyAction);
   if (copyContactBtn) copyContactBtn.addEventListener('click', copyAction);
+  if (copyDockBtn) copyDockBtn.addEventListener('click', copyAction);
 }
 
 // 4. Mobile Navigation Menu
