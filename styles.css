@@ -49,6 +49,15 @@ html.light ::-webkit-scrollbar-thumb {
   background: #3b82f6;
 }
 
+/* Hide scrollbars for slick mobile pill carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Text Selection */
 ::selection {
   background: rgba(59, 130, 246, 0.3);
@@ -258,32 +267,47 @@ body.modal-open {
 
 .card-3d-wrap {
   perspective: 1200px;
+  height: 100%;
 }
 
 .card-3d {
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.18s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   will-change: transform;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card-3d-content {
   transform-style: preserve-3d;
 }
 
-/* Floating 3D layers */
+/* Tactile 3D Press Response (Click / Active State) */
+.card-3d:active,
+.card-3d.card-pressed {
+  transform: perspective(1000px) scale3d(0.978, 0.978, 0.978) translateZ(-10px) !important;
+  transition: transform 0.08s cubic-bezier(0.2, 0, 0, 1) !important;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25), 0 6px 18px -4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Floating 3D parallax layers */
+.card-float-xs {
+  transform: translateZ(12px);
+  transition: transform 0.2s ease;
+}
+
 .card-float-sm {
-  transform: translateZ(16px);
+  transform: translateZ(20px);
   transition: transform 0.2s ease;
 }
 
 .card-float-md {
-  transform: translateZ(28px);
+  transform: translateZ(34px);
   transition: transform 0.2s ease;
 }
 
 .card-float-lg {
-  transform: translateZ(42px);
+  transform: translateZ(48px);
   transition: transform 0.2s ease;
 }
 
@@ -294,13 +318,13 @@ body.modal-open {
   border-radius: inherit;
   pointer-events: none;
   background: radial-gradient(
-    circle 360px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0.04) 40%,
-    transparent 80%
+    circle 380px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 75%
   );
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.3s ease;
   mix-blend-mode: overlay;
   z-index: 25;
 }
@@ -309,18 +333,40 @@ body.modal-open {
   opacity: 1;
 }
 
+/* Click Ripple Animation */
+.card-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: translate(-50%, -50%) scale(0);
+  animation: cardRippleAnim 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 30;
+}
+
+@keyframes cardRippleAnim {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
 /* ----------------- Luxury Golden Amber Theme ----------------- */
 .theme-golden {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.09) 0%, rgba(17, 24, 39, 0.95) 50%, rgba(3, 7, 18, 0.98) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(245, 158, 11, 0.18);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(18, 22, 34, 0.96) 50%, rgba(3, 7, 18, 0.99) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  box-shadow: inset 0 1px 0 0 rgba(254, 240, 138, 0.22), 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(245, 158, 11, 0.2);
 }
 
 .theme-golden::before {
   content: '';
   position: absolute;
   inset: -1px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.6), rgba(234, 179, 8, 0.2), transparent 70%);
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.65), rgba(234, 179, 8, 0.25), transparent 70%);
   border-radius: inherit;
   z-index: -1;
   opacity: 0;
@@ -332,8 +378,8 @@ body.modal-open {
 }
 
 .theme-golden:hover {
-  border-color: rgba(245, 158, 11, 0.7);
-  box-shadow: 0 20px 45px -10px rgba(245, 158, 11, 0.3), 0 0 35px rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.85);
+  box-shadow: inset 0 1px 0 0 rgba(254, 240, 138, 0.45), 0 22px 50px -10px rgba(245, 158, 11, 0.35), 0 0 40px rgba(245, 158, 11, 0.3);
 }
 
 .gold-gradient-text {
@@ -349,8 +395,8 @@ body.modal-open {
 /* Light Mode Overrides for Golden Theme */
 html.light .theme-golden {
   background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%) !important;
-  border-color: rgba(245, 158, 11, 0.35) !important;
-  box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+  box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.2) !important;
 }
 
 html.light .gold-gradient-text {
@@ -361,36 +407,134 @@ html.light .gold-gradient-text {
 
 /* ----------------- Electric Cyan Theme ----------------- */
 .theme-cyan {
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.08) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(3, 7, 18, 0.98) 100%);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(6, 182, 212, 0.15);
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(15, 23, 42, 0.96) 50%, rgba(3, 7, 18, 0.99) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.38);
+  box-shadow: inset 0 1px 0 0 rgba(165, 243, 252, 0.22), 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(6, 182, 212, 0.2);
+}
+
+.theme-cyan::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.65), rgba(14, 165, 233, 0.25), transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.theme-cyan:hover::before {
+  opacity: 1;
 }
 
 .theme-cyan:hover {
-  border-color: rgba(6, 182, 212, 0.65);
-  box-shadow: 0 20px 45px -10px rgba(6, 182, 212, 0.25), 0 0 35px rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.85);
+  box-shadow: inset 0 1px 0 0 rgba(165, 243, 252, 0.45), 0 22px 50px -10px rgba(6, 182, 212, 0.35), 0 0 40px rgba(6, 182, 212, 0.25);
 }
 
 html.light .theme-cyan {
   background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%) !important;
-  border-color: rgba(6, 182, 212, 0.3) !important;
+  border-color: rgba(6, 182, 212, 0.35) !important;
+  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15) !important;
 }
 
 /* ----------------- Emerald Green Theme ----------------- */
 .theme-emerald {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.95) 50%, rgba(3, 7, 18, 0.98) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(16, 185, 129, 0.15);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(15, 23, 42, 0.96) 50%, rgba(3, 7, 18, 0.99) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.38);
+  box-shadow: inset 0 1px 0 0 rgba(167, 243, 208, 0.22), 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(16, 185, 129, 0.2);
+}
+
+.theme-emerald::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.65), rgba(52, 211, 153, 0.25), transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.theme-emerald:hover::before {
+  opacity: 1;
 }
 
 .theme-emerald:hover {
-  border-color: rgba(16, 185, 129, 0.65);
-  box-shadow: 0 20px 45px -10px rgba(16, 185, 129, 0.25), 0 0 35px rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.85);
+  box-shadow: inset 0 1px 0 0 rgba(167, 243, 208, 0.45), 0 22px 50px -10px rgba(16, 185, 129, 0.35), 0 0 40px rgba(16, 185, 129, 0.25);
 }
 
 html.light .theme-emerald {
   background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%) !important;
-  border-color: rgba(16, 185, 129, 0.3) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15) !important;
+}
+
+/* ----------------- Royal Blue Theme ----------------- */
+.theme-blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(15, 23, 42, 0.96) 50%, rgba(3, 7, 18, 0.99) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.38);
+  box-shadow: inset 0 1px 0 0 rgba(191, 219, 254, 0.22), 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(59, 130, 246, 0.2);
+}
+
+.theme-blue::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.65), rgba(96, 165, 250, 0.25), transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.theme-blue:hover::before {
+  opacity: 1;
+}
+
+.theme-blue:hover {
+  border-color: rgba(59, 130, 246, 0.85);
+  box-shadow: inset 0 1px 0 0 rgba(191, 219, 254, 0.45), 0 22px 50px -10px rgba(59, 130, 246, 0.35), 0 0 40px rgba(59, 130, 246, 0.25);
+}
+
+html.light .theme-blue {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%) !important;
+  border-color: rgba(59, 130, 246, 0.35) !important;
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* ----------------- Cyber Violet / Purple Theme ----------------- */
+.theme-purple {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(15, 23, 42, 0.96) 50%, rgba(3, 7, 18, 0.99) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.38);
+  box-shadow: inset 0 1px 0 0 rgba(233, 213, 255, 0.22), 0 12px 35px -10px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(168, 85, 247, 0.2);
+}
+
+.theme-purple::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.65), rgba(192, 132, 252, 0.25), transparent 70%);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.theme-purple:hover::before {
+  opacity: 1;
+}
+
+.theme-purple:hover {
+  border-color: rgba(168, 85, 247, 0.85);
+  box-shadow: inset 0 1px 0 0 rgba(233, 213, 255, 0.45), 0 22px 50px -10px rgba(168, 85, 247, 0.35), 0 0 40px rgba(168, 85, 247, 0.25);
+}
+
+html.light .theme-purple {
+  background: linear-gradient(135deg, #faf5ff 0%, #ffffff 100%) !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
+  box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.15) !important;
 }
 
 /* Mockup preview frame inside project cards */
@@ -398,13 +542,32 @@ html.light .theme-emerald {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 35px -5px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
 }
 
 .project-preview-frame:hover {
-  transform: scale(1.015);
-  box-shadow: 0 18px 40px -5px rgba(0, 0, 0, 0.8);
+  transform: scale(1.02);
+  box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.85);
+}
+
+/* Timeline Milestone Glass Polish */
+.milestone-item {
+  position: relative;
+  transition: transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.milestone-item:hover {
+  transform: translateX(4px);
+}
+
+/* Mobile responsive refinements */
+@media (max-width: 640px) {
+  .card-float-sm,
+  .card-float-md,
+  .card-float-lg {
+    transform: none !important;
+  }
 }
 

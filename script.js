@@ -108,7 +108,7 @@ function setupMobileMenu() {
 // 5. Project Category Filtering
 function setupProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const cardWrappers = document.querySelectorAll('.card-3d-wrap');
+  const cardWrappers = document.querySelectorAll('#projects-grid .card-3d-wrap');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -382,18 +382,72 @@ function fallbackMailto(name, email, regarding, message) {
   window.location.href = `mailto:alokrana0770@gmail.com?subject=${subject}&body=${body}`;
 }
 
-// 9. Interactive 3D Tilt Cards with Dynamic Specular Glare
+// 9. Interactive 3D Tilt Cards with Dynamic Specular Glare & Tactile Feedback
 function setup3DTiltCards() {
   const cards = document.querySelectorAll('.card-3d');
   if (!cards.length) return;
 
-  // Disable 3D tilt on mobile touch devices for smooth native scroll performance
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouchDevice) return;
+
+  // Luminous click ripple generator
+  const createCardRipple = (card, clientX, clientY) => {
+    const rect = card.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+
+    const ripple = document.createElement('span');
+    ripple.className = 'card-ripple';
+    const size = Math.max(rect.width, rect.height) * 1.4;
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    card.appendChild(ripple);
+    setTimeout(() => {
+      ripple.remove();
+    }, 550);
+  };
 
   cards.forEach(card => {
     let bounds = null;
 
+    // Tactile Click Response & Card-Level Modal Trigger
+    card.addEventListener('click', (e) => {
+      // Create ripple effect at click coordinates
+      createCardRipple(card, e.clientX, e.clientY);
+
+      // If project card with data-modal and click wasn't on a button or link, open modal
+      const modalId = card.getAttribute('data-modal');
+      if (modalId && !e.target.closest('a, button')) {
+        openModal(modalId);
+      }
+    });
+
+    if (isTouchDevice) {
+      // Touch devices: Provide sleek tactile active response without interfering with native page scrolling
+      card.addEventListener('touchstart', (e) => {
+        card.classList.add('card-pressed');
+        if (e.touches && e.touches[0]) {
+          const touch = e.touches[0];
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${touch.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${touch.clientY - rect.top}px`);
+        }
+      }, { passive: true });
+
+      const removePressed = () => {
+        setTimeout(() => {
+          card.classList.remove('card-pressed');
+        }, 160);
+      };
+
+      card.addEventListener('touchend', removePressed, { passive: true });
+      card.addEventListener('touchcancel', removePressed, { passive: true });
+      return;
+    }
+
+    // Desktop Mouse 3D Tilt & Specular Light Physics
     const onMouseEnter = () => {
       bounds = card.getBoundingClientRect();
     };
@@ -406,10 +460,11 @@ function setup3DTiltCards() {
       const normX = (mouseX / bounds.width - 0.5) * 2; // -1 to 1
       const normY = (mouseY / bounds.height - 0.5) * 2; // -1 to 1
 
-      const rotateX = -normY * 7.5; // Max 7.5 deg
-      const rotateY = normX * 7.5; // Max 7.5 deg
+      // Refined ergonomic tilt physics: max 6.5deg
+      const rotateX = -normY * 6.5;
+      const rotateY = normX * 6.5;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.018, 1.018, 1.018)`;
       card.style.setProperty('--mouse-x', `${mouseX}px`);
       card.style.setProperty('--mouse-y', `${mouseY}px`);
     };
